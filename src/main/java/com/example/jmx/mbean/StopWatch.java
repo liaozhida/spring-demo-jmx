@@ -1,4 +1,4 @@
-package com.example.springjmx;
+package com.example.jmx.mbean;
 
 
 public interface StopWatch {
