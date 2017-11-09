@@ -1,4 +1,4 @@
-package com.example.jmx;
+package com.example.jmxmp;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -15,12 +15,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes=com.example.jmxmp.JmxServer.class)
 public class JmxApplicationTests {
 
 	private final static String url = "service:jmx:jmxmp://localhost:9875";
-	private final static String NAME_STOPWATCH = "com.example.jmx.mbean:name=StopWatch";
-	private final static String NAME_SERVERMANAGER = "com.example.jmx.mbean:name=serverManager,type=ServerManager";
+	private final static String NAME_STOPWATCH = "com.example.jmxmp.mbean:name=StopWatch";
+	private final static String NAME_SERVERMANAGER = "com.example.jmxmp.mbean:name=serverManager,type=ServerManager";
 
 	@Autowired
 	private MBeanServerConnection clientConnector = null;

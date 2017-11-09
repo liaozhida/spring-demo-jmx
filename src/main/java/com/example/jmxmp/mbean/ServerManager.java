@@ -1,4 +1,4 @@
-package com.example.jmx.mbean;
+package com.example.jmxmp.mbean;
 
 import java.util.Random;
 

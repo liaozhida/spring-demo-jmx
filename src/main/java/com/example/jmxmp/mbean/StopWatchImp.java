@@ -1,4 +1,4 @@
-package com.example.jmx.mbean;
+package com.example.jmxmp.mbean;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @ManagedResource
-(objectName="com.example.jmx.mbean:name=StopWatch")
+(objectName="com.example.jmxmp.mbean:name=StopWatch")
 public class StopWatchImp implements InitializingBean, StopWatch {
 
 

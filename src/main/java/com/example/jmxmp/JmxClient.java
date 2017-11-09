@@ -1,4 +1,4 @@
-package com.example.jmx;
+package com.example.jmxmp;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
