@@ -1,28 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context 
                            http://www.springframework.org/schema/context/spring-context.xsd">
- 
-    <context:component-scan base-package="org.springbyexample.jmx" />
-    
-    <context:mbean-export/>
 
-    <!-- Expose JMX over JMXMP -->
-    <bean id="serverConnector" class="org.springframework.jmx.support.ConnectorServerFactoryBean" />
+	<context:component-scan base-package="org.springbyexample.jmx" />
 
-    <!-- Client connector to JMX over JMXMP -->
-    <bean id="clientConnector" class="org.springframework.jmx.support.MBeanServerConnectionFactoryBean"
-          p:serviceUrl="service:jmx:jmxmp://localhost:9875" />
+	<context:mbean-export />
 
-    <!-- Client ServerManager proxy to JMX over JMXMP -->
-    <!-- <bean id="serverManagerProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean"
-          p:objectName="com.example.springjmx:name=StopWatch"
-          p:proxyInterface="com.example.springjmx.StopWatch"
-          p:server-ref="clientConnector" /> -->
+	<!-- Expose JMX over JMXMP -->
+	<bean id="serverConnector"
+		class="org.springframework.jmx.support.ConnectorServerFactoryBean" />
+
+	<!-- Client connector to JMX over JMXMP -->
+	<bean id="clientConnector"
+		class="org.springframework.jmx.support.MBeanServerConnectionFactoryBean"
+		p:serviceUrl="service:jmx:jmxmp://localhost:9875" />
+
+
+	<bean id="htmlAdaptor" class="com.sun.jdmk.comm.HtmlAdaptorServer"
+		init-method="start" p:port="8082" />
+
+	<!-- 
+		Spring comes with a class that acts as a proxy to an MBean. This can be
+		a bean of yourself, a bean provided by a library but also a bean
+		running in a remote jmx server. The following lines show the addition
+		xml configuration for the proxy. You need an interface that is
+		implemented by the proxy. It is easy if the MXBean implements this
+		interface, but as long as the methods are available it is not required.
+		Using this interface you can inject the proxy into another class, the
+		JMXTestClient. Which in itself can be a controller or a service in your
+		own application. 
+	-->
+	
+	<!-- Client ServerManager proxy to JMX over JMXMP -->
+	<!-- <bean id="serverManagerProxy" class="org.springframework.jmx.access.MBeanProxyFactoryBean" 
+		p:objectName="com.example.springjmx:name=StopWatch" p:proxyInterface="com.example.springjmx.StopWatch" 
+		p:server-ref="clientConnector" /> -->
 
 </beans>

@@ -37,25 +37,19 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jolokia</groupId>
-			<artifactId>jolokia-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jolokia</groupId>
-			<artifactId>jolokia-spring</artifactId>
-			<classifier>plugin</classifier>
-			<version>1.1.0</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.jvnet.opendmk</groupId>
 			<artifactId>jmxremote_optional</artifactId>
 			<version>1.0_01-ea</version>
 		</dependency>
 
-	</dependencies>
+		<dependency>
+			<groupId>com.sun.jdmk</groupId>
+			<artifactId>jmxtools</artifactId>
+			<version>1.2.1</version>
+		</dependency>
 
+	</dependencies>
+ 
 	<build>
 		<plugins>
 			<plugin>

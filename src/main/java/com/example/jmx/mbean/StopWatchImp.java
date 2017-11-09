@@ -50,7 +50,6 @@ public class StopWatchImp implements InitializingBean, StopWatch {
 	@Override
 	@ManagedOperation
 	public void start() {
-		System.out.println("hello world --- ");
 		this.scheduler.initialize();
 		this.future = this.scheduler.scheduleAtFixedRate(new Runnable() {
 			public void run() {
